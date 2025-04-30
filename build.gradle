@@ -18,10 +18,17 @@ repositories {
 }
 
 dependencies {
+	// Spring Boot dependencies
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'com.h2database:h2'
+
+	// H2 Database for development
+	implementation 'com.h2database:h2'
+
+	// PostgreSQL for production
 	runtimeOnly 'org.postgresql:postgresql'
+
+	// Testing dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

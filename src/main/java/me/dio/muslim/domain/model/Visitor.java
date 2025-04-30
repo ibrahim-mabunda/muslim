@@ -1,14 +1,39 @@
 package me.dio.muslim.domain.model;
 
-public class Visitor {
-    private long id; 
-    private String number;
-    private String limite;
+import java.math.BigDecimal;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 
-    public Visitor(long id, String number, String limite) {
+@Entity(name = "tb_visitor")
+public class Visitor {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(unique = true)
+    private String number;
+
+    @Column(name = "additional_limit", precision = 13, scale = 2)
+    private BigDecimal limit;
+
+    @Column(precision = 13, scale = 2)
+    private BigDecimal balance;
+
+    private String nomeDaMesquita;
+
+    public Visitor() {
+    }
+
+    public Visitor(long id, String number, BigDecimal limit, BigDecimal balance, String nomeDaMesquita) {
         this.id = id;
         this.number = number;
-        this.limite = limite;
+        this.limit = limit;
+        this.balance = balance;
+        this.nomeDaMesquita = nomeDaMesquita;
     }
 
     public long getId() {
@@ -27,11 +52,27 @@ public class Visitor {
         this.number = number;
     }
 
-    public String getLimite() {
-        return limite;
+    public BigDecimal getLimit() {
+        return limit;
     }
 
-    public void setLimite(String limite) {
-        this.limite = limite;
+    public void setLimit(BigDecimal limit) {
+        this.limit = limit;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public String getNomeDaMesquita() {
+        return nomeDaMesquita;
+    }
+
+    public void setNomeDaMesquita(String nomeDaMesquita) {
+        this.nomeDaMesquita = nomeDaMesquita;
     }
 }
